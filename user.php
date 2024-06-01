@@ -10,7 +10,7 @@ class User {
         $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
-   ]
+   
     public function isUser_exists($username) {
         $db = db_connect();
         $statement = $db->prepare("SELECT * FROM users WHERE username = :username");

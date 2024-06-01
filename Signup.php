@@ -4,7 +4,7 @@ require_once('user.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $username = $_REQUEST['username']; 
+    $username = $_REQUEST['username'];
     $password = $_REQUEST['password'];
     $confirm_password = $_REQUEST['confirm_password'];
     $db = db_connect();
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $statement = $db->prepare("INSERT into users (username, password) VALUES (?, ?)");
         $statement->execute([$username, $hash]);
-
+    
         session_start();
         $_SESSION['username'] = $username;
         $_SESSION['authenticated'] = 1;
